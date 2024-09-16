@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-4 items-center bg-gray-100 pt-4">
+  <shop-header [header]="'h1'" [title]="'Product Gallery'"></shop-header>
+  @if (products$ | async; as products) {
+  <product-list [products]="products">
+    <ng-template product-ref let-product>
+      <shop-card
+        [id]="product.id"
+        [title]="product.title"
+        [price]="product.price"
+      >
+        <card-img>
+          <img
+            class="w-full object-cover h-[150px] rounded-t-md"
+            [src]="product.image"
+            [alt]="product.title"
+          />
+        </card-img>
+      </shop-card>
+    </ng-template>
+  </product-list>
+  }
+</div>
