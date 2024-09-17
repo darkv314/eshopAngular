@@ -2,7 +2,9 @@
   <ng-content select="card-img"></ng-content>
   <section class="grid grid-rows-[60px_auto] gap-2 p-4 overflow-hidden">
     <shop-header [header]="'h2'" [title]="title()"> </shop-header>
-    <p class="text-gray-400">{{ currency }} {{ price() }}</p>
+    <shop-currency>
+      {{ price() }}
+    </shop-currency>
     <a [routerLink]="id()">
       <shop-button>View Details</shop-button>
     </a>

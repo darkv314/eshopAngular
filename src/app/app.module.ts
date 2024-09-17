@@ -9,6 +9,9 @@ import { ProductService } from './pages/services/product.service';
 import { StoreModule } from '@ngrx/store';
 import { APP_REDUCER } from './state-managment/reducers/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import * as productEffects from './state-managment/effects/product/product.effect';
+import * as productsEffects from './state-managment/effects/product/products.effect';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
@@ -25,6 +28,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       logOnly: !isDevMode(),
       autoPause: true,
     }),
+    EffectsModule.forRoot(productsEffects, productEffects),
   ],
   providers: [provideHttpClient(withFetch()), ProductService],
   bootstrap: [AppComponent],

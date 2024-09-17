@@ -1,14 +1,19 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './button/button.component';
-import { HeaderComponent } from './header/header.component';
-import { CardComponent, CardImgDirective } from './card/card.component';
+import { ButtonComponent } from './components/button/button.component';
+import { HeaderComponent } from './components/header/header.component';
+import {
+  CardComponent,
+  CardImgDirective,
+} from './components/card/card.component';
 import { CURRENCY_CONFIG, CurrencyConfig } from './tokens/currency-token';
 import {
   ProductListComponent,
   ProductRefDirective,
-} from './product-list/product-list.component';
+} from './components/product-list/product-list.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CurrencyComponent } from './components/currency/currency.component';
+import { RatingComponent } from './components/rating/rating.component';
 @NgModule({
   declarations: [
     ButtonComponent,
@@ -17,6 +22,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     CardImgDirective,
     ProductListComponent,
     ProductRefDirective,
+    CurrencyComponent,
+    RatingComponent,
   ],
   exports: [
     ButtonComponent,
@@ -25,6 +32,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     CardImgDirective,
     ProductListComponent,
     ProductRefDirective,
+    CurrencyComponent,
+    RatingComponent,
   ],
   imports: [CommonModule, RouterLink, RouterLinkActive],
 })
