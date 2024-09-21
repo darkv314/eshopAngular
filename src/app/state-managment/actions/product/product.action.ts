@@ -11,9 +11,9 @@ export const LOAD_PRODUCT_SUCCESS = createAction(
   props<{ product: Product }>()
 );
 
-export const ADD_PRODUCT_COMMENT = createAction(
+export const ADD_PRODUCT_COMMENTS = createAction(
   '[Product] - ADD_PRODUCT_COMMENT',
-  props<{ productId: string; comment: string }>()
+  props<{ productId: string; comments: string[] }>()
 );
 
 export const LOAD_PRODUCTS = createAction(

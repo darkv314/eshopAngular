@@ -5,3 +5,5 @@ export * from './lib/components/header/header.component';
 export * from './lib/components/product-list/product-list.component';
 export * from './lib/components/currency/currency.component';
 export * from './lib/components/rating/rating.component';
+export * from './lib/components/comment-input/comment-input.component';
+export * from './lib/components/comment/comment.component';

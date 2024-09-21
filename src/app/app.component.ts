@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   host: {
-    class: 'min-h-dvh flex flex-col',
+    class: 'min-h-dvh flex flex-col bg-gray-100',
   },
 })
 export class AppComponent {}

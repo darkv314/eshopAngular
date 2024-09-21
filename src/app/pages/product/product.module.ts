@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { EshopModule } from 'eshop-components';
-import { ProductComponent } from './product.component';
+import {
+  CommentContainerDirective,
+  ProductComponent,
+} from './product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProductComponent],
+  declarations: [ProductComponent, CommentContainerDirective],
   imports: [
     CommonModule,
     EshopModule.forRoot({ currency: '$' }),

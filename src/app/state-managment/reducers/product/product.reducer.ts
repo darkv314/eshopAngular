@@ -1,11 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProductState } from '../../state/product/product.state';
 import {
-  ADD_PRODUCT_COMMENT,
+  ADD_PRODUCT_COMMENTS,
   LOAD_PRODUCT_SUCCESS,
   LOAD_PRODUCTS_SUCCESS,
 } from '../../actions/product/product.action';
-import { AppState } from '../../state/app.state';
 
 const productsInitialState: ProductState = {
   products: [],
@@ -13,10 +12,19 @@ const productsInitialState: ProductState = {
 
 export const PRODUCT_REDUCER = createReducer(
   productsInitialState,
-  on(LOAD_PRODUCT_SUCCESS, (state: ProductState, { product }) => {
+  on(LOAD_PRODUCT_SUCCESS, (state: ProductState, { product: newProduct }) => {
     return {
       ...state,
-      products: [...state.products, product],
+      products: state.products.length
+        ? state.products.map((product) =>
+            newProduct.id === product.id
+              ? {
+                  ...newProduct,
+                  comments: product.comments || [],
+                }
+              : product
+          )
+        : [newProduct],
     };
   }),
   on(LOAD_PRODUCTS_SUCCESS, (state: ProductState, { products }) => {
@@ -33,10 +41,10 @@ export const PRODUCT_REDUCER = createReducer(
       })),
     };
   }),
-  on(ADD_PRODUCT_COMMENT, (state: ProductState, { productId, comment }) => {
+  on(ADD_PRODUCT_COMMENTS, (state: ProductState, { productId, comments }) => {
     const updatedProducts = state.products.map((product) =>
       product.id === Number(productId)
-        ? { ...product, comments: [...(product.comments || []), comment] }
+        ? { ...product, comments: [...(product.comments || []), ...comments] }
         : product
     );
     return {

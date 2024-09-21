@@ -1,4 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/button/button.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +15,8 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { CommentInputComponent } from './components/comment-input/comment-input.component';
+import { CommentComponent } from './components/comment/comment.component';
 @NgModule({
   declarations: [
     ButtonComponent,
@@ -24,6 +27,8 @@ import { RatingComponent } from './components/rating/rating.component';
     ProductRefDirective,
     CurrencyComponent,
     RatingComponent,
+    CommentInputComponent,
+    CommentComponent,
   ],
   exports: [
     ButtonComponent,
@@ -34,8 +39,10 @@ import { RatingComponent } from './components/rating/rating.component';
     ProductRefDirective,
     CurrencyComponent,
     RatingComponent,
+    CommentInputComponent,
+    CommentComponent,
   ],
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, FormsModule],
 })
 export class EshopModule {
   static forRoot(config: CurrencyConfig): ModuleWithProviders<EshopModule> {

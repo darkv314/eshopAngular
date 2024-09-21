@@ -1,20 +1,30 @@
-<div class="grid grid-cols-[1fr_2fr] grid-rows-[1fr] h-full">
+<div class="min-h-dvh p-2 grid grid-cols-[1fr_2fr] grid-rows-[1fr] h-full">
   <section>
     <shop-header [header]="'h2'" [title]="'Product Details'"></shop-header>
   </section>
   @if (product$ | async; as product) {
-  <section>
-    <img [src]="product.image" [alt]="product.title" />
-    <shop-header [header]="'h2'" [title]="product.title"></shop-header>
-    <shop-currency> {{ product.price }} </shop-currency>
-    <p>
-      {{ product.description }}
-    </p>
-    <shop-rating
-      [count]="product.rating.count"
-      [rating]="product.rating.rate"
-    ></shop-rating>
-    <button (click)="onClick()">Add comment</button>
+  <section class="grid grid-rows-2 gap-4 max-h-[98dvh]">
+    <img
+      class="h-full object-cover rounded-md"
+      [src]="product.image"
+      [alt]="product.title"
+    />
+    <section class="flex flex-col gap-2">
+      <shop-header [header]="'h2'" [title]="product.title"></shop-header>
+      <shop-currency> {{ product.price }} </shop-currency>
+      <p>
+        {{ product.description }}
+      </p>
+      <shop-rating
+        [count]="product.rating.count"
+        [rating]="product.rating.rate"
+      ></shop-rating>
+      <shop-header [header]="'h2'" [title]="'Comments'"> </shop-header>
+      <shop-comment-input
+        (addComment)="onAddComment($event)"
+      ></shop-comment-input>
+      <ng-container commentContainer></ng-container>
+    </section>
   </section>
   }
 </div>

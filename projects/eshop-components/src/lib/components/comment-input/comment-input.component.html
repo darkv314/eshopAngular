@@ -1,0 +1,14 @@
+<section class="flex flex-col gap-2">
+  <textarea
+    placeholder="Add a comment..."
+    class="border border-black w-full rounded-md p-2 h-[100px]"
+    [(ngModel)]="commentMessage"
+    name="Comment Input"
+    id="commentInput"
+    (keydown.enter)="onAddComment()"
+  >
+  </textarea>
+  <shop-button [wfull]="false" (onClick)="onAddComment()"
+    >Add Comment</shop-button
+  >
+</section>
