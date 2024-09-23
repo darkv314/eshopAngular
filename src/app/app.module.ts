@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ProductService } from './pages/services/product.service';
 import { StoreModule } from '@ngrx/store';
 import { APP_REDUCER } from './state-managment/reducers/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
