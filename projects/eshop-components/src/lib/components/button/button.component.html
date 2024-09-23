@@ -1,7 +1,7 @@
 <button
   (click)="onClick.emit()"
   class="grid place-items-center text-white p-3 bg-primary rounded-md"
-  [ngClass]="wfull() ? 'w-full' : 'w-auto'"
+  [ngClass]="wfull ? 'w-full' : 'w-auto'"
 >
   <ng-content></ng-content>
 </button>

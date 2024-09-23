@@ -2,7 +2,7 @@ import {
   Component,
   contentChild,
   Directive,
-  input,
+  Input,
   TemplateRef,
 } from '@angular/core';
 
@@ -14,7 +14,7 @@ import {
   },
 })
 export class HeaderComponent {
-  header = input<'h1' | 'h2' | 'h3'>('h1');
-  center = input<boolean>(false);
-  title = input.required<string>();
+  @Input() header: 'h1' | 'h2' | 'h3' = 'h1';
+  @Input() center: boolean = false;
+  @Input({ required: true }) title!: string;
 }

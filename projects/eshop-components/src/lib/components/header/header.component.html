@@ -1,26 +1,26 @@
-<ng-container [ngSwitch]="header()">
+<ng-container [ngSwitch]="header">
   <h1
-    [title]="title()"
+    [title]="title"
     *ngSwitchCase="'h1'"
     class="font-bold text-[32px] leading-[150%]"
-    [ngClass]="center() ? 'text-center' : 'text-left'"
+    [ngClass]="center ? 'text-center' : 'text-left'"
   >
-    {{ title() }}
+    {{ title }}
   </h1>
   <h2
-    [title]="title()"
+    [title]="title"
     *ngSwitchCase="'h2'"
     class="font-bold text-[20px] leading-[150%]"
-    [ngClass]="center() ? 'text-center' : 'text-left'"
+    [ngClass]="center ? 'text-center' : 'text-left'"
   >
-    {{ title() }}
+    {{ title }}
   </h2>
   <h3
-    [title]="title()"
+    [title]="title"
     *ngSwitchCase="'h3'"
     class="font-bold text-[16px] leading-[150%]"
-    [ngClass]="center() ? 'text-center' : 'text-left'"
+    [ngClass]="center ? 'text-center' : 'text-left'"
   >
-    {{ title() }}
+    {{ title }}
   </h3>
 </ng-container>

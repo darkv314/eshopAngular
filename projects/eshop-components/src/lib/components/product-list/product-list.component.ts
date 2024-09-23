@@ -1,30 +1,24 @@
 import {
   Component,
-  contentChild,
+  ContentChild,
   Directive,
-  input,
-  Signal,
+  Input,
   TemplateRef,
 } from '@angular/core';
 
 @Directive({
   selector: '[product-ref]',
 })
-export class ProductRefDirective {}
+export class ProductRefDirective<T> {
+  constructor(public template: TemplateRef<{ $implicit: T }>) {}
+}
 
 @Component({
   selector: 'product-list',
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent<T extends { id: number }> {
-  products = input<T[] | null>(null);
-  productTemplate: Signal<TemplateRef<{ $implicit: T }>> =
-    contentChild.required(ProductRefDirective, {
-      read: TemplateRef<{
-        $implicit: T;
-      }>,
-    });
-  ngOnInit(): void {
-    this.productTemplate.call({ $implicit: this.products });
-  }
+  @Input() products: T[] | null = null;
+  @ContentChild(ProductRefDirective, { read: TemplateRef<{ $implicit: T }> })
+  productTemplate!: TemplateRef<{ $implicit: T }>;
 }
