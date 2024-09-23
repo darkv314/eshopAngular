@@ -30,7 +30,7 @@ import * as productsEffects from './state-managment/effects/product/products.eff
     }),
     EffectsModule.forRoot(productsEffects, productEffects),
   ],
-  providers: [provideHttpClient(withFetch()), ProductService],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

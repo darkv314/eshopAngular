@@ -6,8 +6,6 @@ import {
 } from './product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EffectsModule } from '@ngrx/effects';
-import * as productEffect from '../../state-managment/effects/product/product.effect';
 
 const routes: Routes = [
   {

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ComponentFactoryResolver,
   Directive,
@@ -17,6 +18,7 @@ import {
   LOAD_PRODUCT,
 } from '../../state-managment/actions/product/product.action';
 import { CommentComponent } from 'eshop-components';
+import { ProductsFacade } from '../services/facades/products.facade';
 
 @Directive({
   selector: '[commentContainer]',
@@ -31,6 +33,7 @@ export class CommentContainerDirective {
   host: {
     class: 'min-h-dvh bg-gray-100',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductComponent implements OnInit {
   product$?: Observable<Product | undefined>;
@@ -41,15 +44,15 @@ export class ProductComponent implements OnInit {
   commentContainer!: CommentContainerDirective;
 
   constructor(
-    private _store: Store<AppState>,
+    private _productsFacade: ProductsFacade,
     private _route: ActivatedRoute,
     private _componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
   ngOnInit(): void {
     this.paramValue = this._route.snapshot.params['productId'];
-    this._store.dispatch(LOAD_PRODUCT({ productId: this.paramValue }));
-    this.product$ = this._store.select(GET_PRODUCT(Number(this.paramValue)));
+    this._productsFacade.loadProduct(this.paramValue);
+    this.product$ = this._productsFacade.getProduct(this.paramValue);
   }
 
   ngAfterViewInit(): void {
@@ -85,12 +88,7 @@ export class ProductComponent implements OnInit {
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
-    this._store.dispatch(
-      ADD_PRODUCT_COMMENTS({
-        productId: this.paramValue,
-        comments: this.newComments,
-      })
-    );
+    this._productsFacade.addProductComments(this.paramValue, this.newComments);
   }
 
   isEqual(prev: Product | undefined, curr: Product | undefined): boolean {

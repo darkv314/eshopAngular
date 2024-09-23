@@ -1,4 +1,9 @@
-import { Component, Directive, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Input,
+} from '@angular/core';
 
 /**
  * @description
@@ -40,6 +45,7 @@ export class CardImgDirective {}
   selector: 'shop-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
   @Input({ required: true }) title!: string;

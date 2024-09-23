@@ -2,7 +2,7 @@
   <shop-header [header]="'h1'" [title]="'Product Gallery'"></shop-header>
   @if (products$ | async; as products) {
   <product-list [products]="products">
-    <ng-template product-ref let-product>
+    <ng-template productRef let-product>
       <shop-card
         [id]="product.id"
         [title]="product.title"

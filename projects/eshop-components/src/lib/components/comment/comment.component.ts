@@ -1,25 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 /**
  * @description
- * This component is responsible for displaying a customizable shop button.
- * You can project content into the button using the `ng-content` within the component tag.
+ * This component is responsible for displaying a comment
  *
- * @property {boolean} wfull - If true, the button will take the full width of its container.
- *
- * @event onClick - This event is emitted when the button is clicked. Emits an empty value (`void`).
+ * @property {boolean} comment - The comment to display.
  *
  * @example
- * <shop-button
- *   [wfull]="true"
- *   (onClick)="handleClick()">
- *   Add Comment
- * </shop-button>
+ * <shop-comment comment="This is a comment"></shop-comment>
  */
 
 @Component({
   selector: 'shop-comment',
   templateUrl: './comment.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentComponent {
   @Input({ required: true }) comment = '';
